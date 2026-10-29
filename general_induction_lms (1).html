@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="ml">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#174e3d">
+<meta name="description" content="Mobile-first Administration General Induction post-workshop assessment for Zaitoon Foundation.">
+<title>Administration | General Induction LMS</title>
+<style>
+  :root{--ink:#172923;--muted:#697771;--line:#e0e8e3;--paper:#f4f7f5;--card:#fff;--green:#174e3d;--green-2:#226c53;--mint:#e4f2eb;--lime:#d7ed9d;--orange:#b46a28;--radius:18px;--shadow:0 10px 35px rgba(18,55,40,.07)}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,"Nirmala UI","Noto Sans Malayalam",Kartika,system-ui,sans-serif;font-size:15px;line-height:1.55}
+  button,input,textarea,select{font:inherit}
+  button{cursor:pointer;touch-action:manipulation}
+  button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #80bca4;outline-offset:2px}
+  .topbar{height:68px;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 max(18px,calc((100vw - 1120px)/2));gap:12px;position:sticky;top:0;z-index:20;box-shadow:0 4px 18px rgba(12,44,32,.12)}
+  .brand{display:flex;align-items:center;gap:10px;min-width:0}.brand-mark{display:grid;place-items:center;width:38px;height:38px;background:var(--lime);color:var(--green);font-weight:900;letter-spacing:-1px;border-radius:12px;flex-shrink:0}.brand-name{font-size:12px;letter-spacing:.11em;font-weight:800;white-space:nowrap}.brand-sub{font-size:11px;opacity:.72;letter-spacing:.04em}
+  .top-actions{display:flex;align-items:center;gap:8px}.top-btn{border:1px solid rgba(255,255,255,.25);border-radius:999px;background:rgba(255,255,255,.08);color:#fff;min-height:38px;padding:7px 13px;font-weight:700;font-size:12px}.top-btn:active,.btn:active{transform:scale(.985)}
+  .shell{max-width:1120px;margin:0 auto;padding:26px 22px 112px}.screen{display:none}.screen.active{display:block;animation:arrive .22s ease-out}@keyframes arrive{from{opacity:.3;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+  .eyebrow{font-size:11px;color:var(--green-2);letter-spacing:.14em;font-weight:800;text-transform:uppercase;margin:0 0 9px}.hero{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(260px,.7fr);gap:20px;align-items:stretch}.hero-main{background:var(--green);color:#fff;border-radius:24px;padding:clamp(22px,4vw,38px);position:relative;overflow:hidden;min-height:258px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center}.hero-main:after{content:"";width:200px;height:200px;border:1px solid rgba(255,255,255,.13);border-radius:50%;position:absolute;right:-62px;bottom:-85px;box-shadow:0 0 0 28px rgba(255,255,255,.025),0 0 0 56px rgba(255,255,255,.025);pointer-events:none}.hero-main .eyebrow{color:var(--lime)}h1{margin:0 0 12px;font-size:clamp(29px,4vw,44px);line-height:1.13;letter-spacing:-.045em;max-width:620px}h1 .highlight{color:var(--lime)}.hero-desc{color:rgba(255,255,255,.78);max-width:500px;margin:0 0 23px;font-size:15px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:13px;min-height:46px;padding:11px 18px;font-weight:800;font-size:14px;transition:transform .15s,background .15s}.btn-primary{background:var(--lime);color:#163d30}.btn-primary:hover{background:#e1f5af}.btn-secondary{background:#edf4f0;color:var(--green);border:1px solid #d9e5de}.btn-plain{background:transparent;color:var(--green);border:1px solid var(--line)}.btn-danger{background:#fff0eb;color:#913d20;border:1px solid #f0d2c7}.btn:disabled{opacity:.45;cursor:not-allowed;transform:none}
+  .overview{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:22px;box-shadow:var(--shadow);display:flex;flex-direction:column;justify-content:space-between;gap:16px}.overview-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}.overview h2{font-size:16px;letter-spacing:-.02em;margin:0}.status-pill{background:var(--mint);color:var(--green);border-radius:999px;padding:5px 9px;font-size:11px;font-weight:800;white-space:nowrap}.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.stat{background:#f5f8f6;border:1px solid #e8efea;border-radius:13px;padding:12px 10px}.stat strong{display:block;font-size:22px;line-height:1.2;color:var(--green);letter-spacing:-.04em}.stat span{font-size:11px;color:var(--muted)}.progress-area{display:grid;gap:8px}.progress-copy{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:12px;color:var(--muted)}.progress-copy strong{color:var(--ink)}.progress-track{height:8px;border-radius:99px;background:#e7eee9;overflow:hidden}.progress-fill{height:100%;width:0;background:var(--green-2);border-radius:99px;transition:width .2s ease}.learner-row{display:grid;grid-template-columns:1fr 155px;gap:10px}.field{display:grid;gap:6px;min-width:0}.field label{color:#44574d;font-size:12px;font-weight:800}.field input,.field textarea,.field select{width:100%;border:1px solid #dce5df;border-radius:12px;background:#fff;color:var(--ink);padding:11px 12px;min-height:44px;outline:none}.field textarea{resize:vertical;min-height:100px;line-height:1.6}.field input::placeholder,.field textarea::placeholder{color:#9aa79f}.field input:focus,.field textarea:focus,.field select:focus{border-color:#83b6a0;box-shadow:0 0 0 3px rgba(53,131,99,.1)}
+  .section-wrap{margin-top:26px}.section-title-row{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:13px}.section-title-row h2{font-size:21px;letter-spacing:-.03em;margin:0}.subtle{font-size:12px;color:var(--muted);margin:4px 0 0}.section-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.section-row{display:grid;grid-template-columns:42px minmax(0,1fr) auto;align-items:center;gap:11px;text-align:left;padding:14px;background:var(--card);border:1px solid var(--line);border-radius:16px;min-width:0}.section-row:hover{border-color:#a8cabc;background:#fcfffd}.section-letter{width:40px;height:40px;border-radius:12px;background:#e9f4ee;color:var(--green);display:grid;place-items:center;font-weight:900}.section-row strong{display:block;font-size:13px;line-height:1.35}.section-row small{display:block;color:var(--muted);font-size:11px;margin-top:4px}.mark-chip{font-size:11px;font-weight:800;color:var(--green);background:#eef6f1;border-radius:9px;padding:5px 8px;white-space:nowrap}.source-note{margin-top:17px;padding:12px 14px;border-left:3px solid #9ac6b0;color:#66766d;background:#edf3ef;border-radius:0 12px 12px 0;font-size:12px}
+  .quiz-layout{display:grid;grid-template-columns:minmax(0,1fr) 225px;gap:20px;align-items:start}.quiz-main{min-width:0}.quiz-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}.back-link{background:transparent;border:0;color:var(--green);padding:8px 0;font-weight:800;font-size:13px;display:inline-flex;align-items:center;gap:7px}.q-counter{font-size:12px;color:var(--muted);font-weight:700}.q-progress{height:5px;border-radius:99px;background:#e5ece7;overflow:hidden;margin-bottom:17px}.q-progress span{display:block;height:100%;background:var(--green-2);border-radius:inherit;transition:width .2s}.question-card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:clamp(18px,3.4vw,30px);box-shadow:var(--shadow)}.q-meta{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:14px}.section-tag{font-size:11px;letter-spacing:.03em;font-weight:800;background:#e9f3ed;color:var(--green);padding:6px 10px;border-radius:8px}.points-tag{color:#5c6b63;background:#f3f6f4;border:1px solid #e7ece8;padding:5px 9px;border-radius:8px;font-weight:800;font-size:11px;white-space:nowrap}.question-title{font-size:clamp(19px,2.4vw,25px);letter-spacing:-.025em;line-height:1.42;margin:0 0 18px;overflow-wrap:anywhere}.question-english{font-size:13px;color:var(--muted);border-left:2px solid #d7e5dc;padding-left:10px;margin:-8px 0 19px;line-height:1.5}.answer-area{display:grid;gap:14px}.answer-hint{font-size:12px;color:var(--muted);margin:0}.answer-input{width:100%;border:1px solid #d8e3dc;border-radius:13px;background:#fff;padding:13px 14px;min-height:48px;color:var(--ink)}textarea.answer-input{min-height:130px;resize:vertical;line-height:1.65}textarea.answer-input.essay{min-height:240px}textarea.answer-input:focus,.answer-input:focus{outline:none;border-color:#83b6a0;box-shadow:0 0 0 3px rgba(53,131,99,.1)}.choice-list{display:grid;gap:10px}.choice{display:grid;grid-template-columns:38px minmax(0,1fr);align-items:start;gap:12px;padding:14px;border:1px solid #dce6df;border-radius:14px;background:#fff;cursor:pointer;transition:border-color .12s,background .12s}.choice:has(input:checked){border-color:#4d9174;background:#f1f8f3;box-shadow:inset 0 0 0 1px #4d9174}.choice input{position:absolute;opacity:0;width:1px;height:1px}.choice-letter{width:32px;height:32px;border-radius:10px;background:#edf3ef;color:#3e6552;display:grid;place-items:center;font-weight:900}.choice:has(input:checked) .choice-letter{background:var(--green);color:white}.choice-copy{font-size:13px;line-height:1.55;padding-top:4px}.task-intro{padding:11px 13px;background:#f2f7f3;border-radius:12px;color:#53695d;font-size:12px;margin:0}.task-grid{display:grid;gap:12px}.task-item{border:1px solid var(--line);border-radius:15px;padding:14px;background:#fcfdfc}.task-item-head{display:flex;gap:10px;align-items:flex-start;margin-bottom:12px}.task-code{display:grid;place-items:center;width:30px;height:30px;border-radius:9px;background:var(--green);color:#fff;font-size:12px;font-weight:900;flex-shrink:0}.task-item h3{margin:2px 0 0;font-size:13px;line-height:1.45}.task-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.task-fields .field label{font-size:11px}.task-fields input,.task-fields textarea{font-size:13px;padding:10px;min-height:42px;border-radius:10px}.task-fields textarea{min-height:68px}.quiz-sidebar{position:sticky;top:88px;display:grid;gap:12px}.side-card{background:#fff;border:1px solid var(--line);border-radius:17px;padding:16px}.side-card h3{font-size:13px;margin:0 0 12px}.side-stat{display:flex;justify-content:space-between;gap:8px;font-size:12px;color:var(--muted);padding:6px 0}.side-stat strong{color:var(--ink)}.map-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}.map-num{min-width:0;aspect-ratio:1/1;border:1px solid #dce5df;border-radius:9px;background:#fff;color:#617067;font-size:12px;font-weight:800;padding:0;position:relative}.map-num.answered{background:#e8f4ec;border-color:#b7d8c5;color:var(--green)}.map-num.current{background:var(--green);border-color:var(--green);color:#fff;box-shadow:0 0 0 2px #d6e9df}.map-num.answered:after{content:"";position:absolute;right:4px;top:4px;width:4px;height:4px;border-radius:50%;background:#3a8a63}.map-num.current:after{display:none}.side-caption{font-size:11px;color:var(--muted);line-height:1.5;margin:11px 0 0}.bottom-nav{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:17px}.bottom-nav .btn{min-width:110px}.save-status{font-size:11px;color:var(--muted);text-align:center;flex:1}.review-card,.result-card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:clamp(18px,3vw,28px);box-shadow:var(--shadow)}.review-title{font-size:28px;letter-spacing:-.035em;line-height:1.2;margin:0 0 9px}.review-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:20px 0}.review-stat{background:#f4f8f5;border:1px solid #e5ede7;border-radius:14px;padding:14px}.review-stat strong{font-size:24px;line-height:1.2;display:block;color:var(--green)}.review-stat span{font-size:11px;color:var(--muted)}.review-sections{display:grid;gap:8px;margin:17px 0}.review-section{display:grid;grid-template-columns:37px 1fr auto;gap:10px;align-items:center;padding:12px;border:1px solid var(--line);border-radius:13px}.review-section .section-letter{width:34px;height:34px;border-radius:10px}.review-section strong{font-size:13px}.review-section small{display:block;color:var(--muted);font-size:11px;margin-top:2px}.review-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:19px}.review-actions .btn{flex:1;min-width:140px}.result-box{background:#edf6f0;border:1px solid #d3e8da;border-radius:15px;padding:16px;margin:18px 0}.result-box h3{font-size:15px;margin:0 0 6px}.result-box p{margin:0;color:#52665a;font-size:13px}.footer-note{text-align:center;color:#8b9890;font-size:11px;margin-top:26px}.toast{position:fixed;z-index:60;left:50%;bottom:calc(84px + env(safe-area-inset-bottom));transform:translate(-50%,12px);opacity:0;pointer-events:none;transition:opacity .18s,transform .18s;background:#153f30;color:#fff;padding:10px 14px;border-radius:99px;font-size:12px;font-weight:700;box-shadow:0 6px 20px #123c2d2b;max-width:calc(100vw - 30px);text-align:center}.toast.show{opacity:1;transform:translate(-50%,0)}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.hide{display:none!important}
+  @media(max-width:800px){.shell{padding:17px 14px calc(100px + env(safe-area-inset-bottom))}.hero{grid-template-columns:1fr}.hero-main{min-height:250px}.overview{padding:18px}.quiz-layout{grid-template-columns:1fr}.quiz-sidebar{display:none;position:fixed;inset:72px 12px calc(16px + env(safe-area-inset-bottom));z-index:30;overflow:auto;align-content:start;gap:10px;padding:10px;background:var(--paper);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}.quiz-sidebar.mobile-open{display:grid}.map-close{display:block;border:1px solid var(--line);background:#fff;color:var(--green);font-weight:800;border-radius:11px;padding:10px 12px;justify-self:end}.sidebar-map{padding:12px 14px}.map-grid{grid-template-columns:repeat(6,minmax(0,1fr))}.side-card{padding:12px 14px}.side-card h3{margin-bottom:8px}.quiz-sidebar .side-card:first-child{display:none}.side-caption{margin-top:8px}.section-list{grid-template-columns:1fr}.section-row{padding:12px}.question-card{padding:18px}.question-title{font-size:20px}.task-fields{grid-template-columns:1fr}.brand-sub{display:none}.topbar{height:60px;padding:0 14px}.brand-mark{width:34px;height:34px}.brand-name{font-size:11px}.top-btn{min-height:36px;padding:7px 11px}.quiz-head{margin-bottom:10px}.question-english{font-size:12px}.bottom-nav{position:fixed;z-index:15;bottom:0;left:0;right:0;background:rgba(255,255,255,.96);backdrop-filter:blur(14px);border-top:1px solid var(--line);padding:10px 14px calc(10px + env(safe-area-inset-bottom));margin:0;box-shadow:0 -6px 18px rgba(21,52,37,.05)}.bottom-nav .btn{min-width:94px;min-height:44px;padding:10px 12px}.save-status{font-size:10px}.review-grid{gap:7px}.review-stat{padding:11px}.review-stat strong{font-size:21px}}
+  @media(max-width:420px){.shell{padding-left:11px;padding-right:11px}.hero-main{padding:22px 19px;min-height:230px}.hero-desc{font-size:14px}.learner-row{grid-template-columns:1fr}.stats{gap:6px}.stat{padding:10px 8px}.stat strong{font-size:20px}.stat span{font-size:10px}.q-meta{align-items:flex-start}.question-card{border-radius:18px;padding:15px}.choice{padding:12px;grid-template-columns:34px minmax(0,1fr);gap:9px}.choice-letter{width:30px;height:30px}.map-grid{grid-template-columns:repeat(6,minmax(0,1fr))}.review-grid{grid-template-columns:1fr 1fr}.review-stat:last-child{grid-column:span 2}.review-title{font-size:25px}.bottom-nav .btn{min-width:82px;font-size:12px}.save-status{max-width:90px}}
+  @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+  @media print{body{background:#fff}.topbar,.quiz-sidebar,.bottom-nav,.back-link,.top-actions,.review-actions{display:none!important}.shell{padding:0;max-width:100%}.screen{display:none!important}#review-screen.active{display:block!important}.review-card{box-shadow:none;border:0;padding:0}.footer-note{display:none}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand" aria-label="Zaitoon Foundation Learning Hub">
+    <div class="brand-mark">ZF</div>
+    <div><div class="brand-name">ZAITOON FOUNDATION</div><div class="brand-sub" data-t="hub">LEARNING HUB</div></div>
+  </div>
+  <div class="top-actions">
+    <button class="top-btn" id="language-toggle" type="button" aria-label="Change language">English</button>
+    <button class="top-btn hide" id="home-top-btn" type="button" data-t="dashboard">Home</button>
+  </div>
+</header>
+<main class="shell">
+  <section id="home-screen" class="screen active" aria-labelledby="main-title">
+    <div class="hero">
+      <div class="hero-main">
+        <p class="eyebrow" data-t="assessmentLabel">POST-WORKSHOP ASSESSMENT</p>
+        <h1 id="main-title"><span data-t="titleLine1">Administration</span><br><span class="highlight" data-t="titleLine2">General Induction</span></h1>
+        <p class="hero-desc" data-t="heroDesc">Check your readiness for coordinated, safe and accountable campus administration.</p>
+        <button class="btn btn-primary" id="start-btn" type="button"><span data-t="startAssessment">Start assessment</span><span aria-hidden="true">→</span></button>
+      </div>
+      <aside class="overview">
+        <div class="overview-head"><h2 data-t="yourAssessment">Your assessment</h2><span class="status-pill" id="home-status" data-t="notStarted">Not started</span></div>
+        <div class="stats">
+          <div class="stat"><strong>90</strong><span data-t="minutes">minutes</span></div>
+          <div class="stat"><strong>100</strong><span data-t="totalMarks">total marks</span></div>
+          <div class="stat"><strong>30</strong><span data-t="questions">questions</span></div>
+        </div>
+        <div class="progress-area">
+          <div class="progress-copy"><span data-t="yourProgress">Your progress</span><strong id="home-progress-label">0%</strong></div>
+          <div class="progress-track" role="progressbar" aria-label="Assessment completion" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="home-progress"><div class="progress-fill" id="home-progress-fill"></div></div>
+        </div>
+        <div class="learner-row">
+          <div class="field"><label for="learner-name" data-t="fullName">Full name</label><input id="learner-name" autocomplete="name" placeholder="Enter your name" maxlength="100"></div>
+          <div class="field"><label for="assessment-date" data-t="date">Date</label><input id="assessment-date" type="date"></div>
+        </div>
+        <button class="btn btn-secondary" id="continue-btn" type="button" style="width:100%" disabled><span data-t="continueAssessment">Continue assessment</span><span aria-hidden="true">↗</span></button>
+      </aside>
+    </div>
+    <section class="section-wrap" aria-labelledby="section-heading">
+      <div class="section-title-row"><div><h2 id="section-heading" data-t="assessmentStructure">Assessment structure</h2><p class="subtle" data-t="sectionsHint">Seven sections, following the uploaded assessment.</p></div><span class="mark-chip">100 <span data-t="marks">marks</span></span></div>
+      <div class="section-list" id="home-sections"></div>
+      <div class="source-note" data-t="sourceNote">This digital page is based on the supplied Post Workshop Assessment. Department names are free-text because the source does not provide a department list. Written responses need assessor review.</div>
+    </section>
+    <p class="footer-note" data-t="localNote">Progress saves in this browser on this device. No account or server connection is included.</p>
+  </section>
+
+  <section id="quiz-screen" class="screen" aria-label="Assessment questions">
+    <div class="quiz-head">
+      <button class="back-link" id="back-home" type="button"><span aria-hidden="true">←</span><span data-t="dashboard">Home</span></button>
+      <div class="q-counter" id="question-counter">Question 1 of 30</div>
+      <button class="btn btn-secondary" id="open-map" type="button" style="min-height:38px;padding:7px 12px;font-size:12px"><span data-t="questionMap">Question map</span></button>
+    </div>
+    <div class="q-progress" aria-hidden="true"><span id="question-progress-fill" style="width:3.3%"></span></div>
+    <div class="quiz-layout">
+      <div class="quiz-main">
+        <article class="question-card" id="question-card"></article>
+        <div class="bottom-nav">
+          <button class="btn btn-plain" id="prev-btn" type="button">← <span data-t="previous">Previous</span></button>
+          <div class="save-status" id="save-status" aria-live="polite" data-t="savedOnDevice">Saved on this device</div>
+          <button class="btn btn-primary" id="next-btn" type="button"><span data-t="next">Next</span> →</button>
+        </div>
+      </div>
+      <aside class="quiz-sidebar">
+        <div class="side-card">
+          <h3 data-t="completion">Completion</h3>
+          <div class="side-stat"><span data-t="answered">Answered</span><strong id="side-answered">0 / 30</strong></div>
+          <div class="side-stat"><span data-t="remaining">Remaining</span><strong id="side-remaining">30</strong></div>
+          <div class="progress-track"><div class="progress-fill" id="side-progress-fill"></div></div>
+          <p class="side-caption" data-t="completionHint">Your answers save automatically as you work.</p>
+        </div>
+        <button class="map-close" id="close-map" type="button">× <span data-t="closeMap">Close map</span></button>
+        <div class="side-card sidebar-map">
+          <h3 data-t="jumpToQuestion">Jump to question</h3>
+          <div class="map-grid" id="question-map"></div>
+          <p class="side-caption" data-t="mapHint">Green means answered. The filled number is the question you are viewing.</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section id="review-screen" class="screen" aria-labelledby="review-heading">
+    <button class="back-link" id="back-to-questions" type="button"><span aria-hidden="true">←</span><span data-t="backToQuestions">Back to questions</span></button>
+    <article class="review-card">
+      <p class="eyebrow" data-t="finalReview">FINAL REVIEW</p>
+      <h1 class="review-title" id="review-heading" data-t="reviewTitle">Review your assessment</h1>
+      <p class="subtle" id="review-intro">Review your progress before completing the assessment.</p>
+      <div class="review-grid">
+        <div class="review-stat"><strong id="review-answered">0 / 30</strong><span data-t="questionsAnswered">Questions answered</span></div>
+        <div class="review-stat"><strong id="review-objective">0 / 25</strong><span data-t="autoScore">Case questions auto-score</span></div>
+        <div class="review-stat"><strong>75</strong><span data-t="manualMarks">Marks for manual review</span></div>
+      </div>
+      <div class="result-box hide" id="submission-result" aria-live="polite">
+        <h3 data-t="assessmentSaved">Assessment saved on this device</h3>
+        <p data-t="submittedNote">Your written answers need to be reviewed by an assessor. Export the answer record to share it.</p>
+      </div>
+      <h2 style="font-size:15px;margin:20px 0 8px" data-t="sectionStatus">Section status</h2>
+      <div class="review-sections" id="review-sections"></div>
+      <p class="source-note" data-t="gradingNote">Only Section G is automatically marked, based on the options in the supplied source. Sections A to F require manual marking; no answer key was supplied for them.</p>
+      <div class="review-actions" id="review-actions">
+        <button class="btn btn-secondary" id="edit-answers-btn" type="button" data-t="editAnswers">Edit answers</button>
+        <button class="btn btn-primary" id="submit-btn" type="button" data-t="completeAssessment">Complete assessment</button>
+        <button class="btn btn-secondary hide" id="export-btn" type="button" data-t="exportAnswers">Export answers</button>
+        <button class="btn btn-plain hide" id="print-btn" type="button" data-t="printReview">Print review</button>
+      </div>
+    </article>
+    <p class="footer-note" data-t="localNote">Progress saves in this browser on this device. No account or server connection is included.</p>
+  </section>
+</main>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+(() => {
+  'use strict';
+  const STORE_KEY = 'zf_general_induction_lms_v1';
+  const today = new Date();
+  const todayStr = `${today.getFullYear()}-${String(today.getMonth()+1).padStart(2,'0')}-${String(today.getDate()).padStart(2,'0')}`;
+  const sections = [
+    {id:'A', ml:'ഒറ്റ ഉത്തര ചോദ്യങ്ങൾ', en:'Department / responsible person', count:'10 questions', countMl:'10 ചോദ്യങ്ങൾ', marks:10, first:1,last:10},
+    {id:'B', ml:'ഒറ്റവരി ഉത്തരങ്ങൾ', en:'One-line answers', count:'5 questions', countMl:'5 ചോദ്യങ്ങൾ', marks:10, first:11,last:15},
+    {id:'C', ml:'ഒരു പാരഗ്രാഫ് ഉത്തരങ്ങൾ', en:'Paragraph answers', count:'5 questions', countMl:'5 ചോദ്യങ്ങൾ', marks:20, first:16,last:20},
+    {id:'D', ml:'അരപ്പേജ് ലേഖനം', en:'Half-page essay', count:'1 question', countMl:'1 ചോദ്യം', marks:10, first:21,last:21},
+    {id:'E', ml:'പ്രശ്നപരിഹാരം', en:'Problem solving', count:'3 questions', countMl:'3 ചോദ്യങ്ങൾ', marks:15, first:22,last:24},
+    {id:'F', ml:'പ്രായോഗിക അസസ്‌മെന്റ്', en:'Practical action plan', count:'30 minutes', countMl:'30 മിനിറ്റ്', marks:10, first:25,last:25},
+    {id:'G', ml:'കേസ് സാഹചര്യം അടിസ്ഥാനമാക്കിയുള്ള തീരുമാനം', en:'Case-based decisions', count:'5 questions', countMl:'5 ചോദ്യങ്ങൾ', marks:25, first:26,last:30}
+  ];
+  const q = (id, sec, type, marks, ml, en, extra={}) => ({id,sec,type,marks,ml,en,...extra});
+  const questions = [
+    q(1,'A','short',1,'ഒരു വിദ്യാർത്ഥിക്ക് ക്ലാസിൽ അപ്രതീക്ഷിതമായി ശാരീരിക അസ്വസ്ഥത അനുഭവപ്പെടുന്നു. ആദ്യം ഏത് വിഭാഗത്തെയാണ് ബന്ധപ്പെടേണ്ടത്?','A student suddenly feels physically unwell in class. Which department should be contacted first?'),
+    q(2,'A','short',1,'മുഴുവൻ ക്ലാസിലും അപ്രതീക്ഷിതമായി വൈദ്യുതി നിലയ്ക്കുന്നു. ആദ്യം ഏത് വിഭാഗത്തെയാണ് ബന്ധപ്പെടേണ്ടത്?','The whole classroom suddenly loses power. Which department should be contacted first?'),
+    q(3,'A','short',1,'ഒരു ഹെൽത്ത് ഇൻസ്‌പെക്ടർ ഔദ്യോഗിക ക്യാമ്പസ് സന്ദർശനത്തിനായി അപ്രതീക്ഷിതമായി എത്തുന്നു. ക്യാമ്പസ് തല ഏകോപനത്തിനായി ആദ്യം ആരെയാണ് അറിയിക്കേണ്ടത്?','A health inspector unexpectedly arrives for an official campus visit. Who should be informed first for campus coordination?'),
+    q(4,'A','short',1,'ഹോസ്റ്റലിനുള്ളിൽ അടിയന്തരമായ ഒരു മെയിന്റനൻസ് പരാതി ഉണ്ടാകുന്നു. ഏത് വിഭാഗത്തെയാണ് ബന്ധപ്പെടേണ്ടത്?','An urgent maintenance issue occurs inside the hostel. Which department should be contacted?'),
+    q(5,'A','short',1,'മുൻകൂട്ടി അറിയിക്കാതെ ഒരു രക്ഷിതാവോ സന്ദർശകനോ ക്യാമ്പസിൽ എത്തുന്നു. ആദ്യം ആ വ്യക്തിയെ സ്വീകരിക്കേണ്ട വിഭാഗം ഏതാണ്?','A parent or visitor arrives on campus without prior notice. Which department should receive them first?'),
+    q(6,'A','short',1,'ക്യാമ്പസിലെ ഇന്റർനെറ്റ് / Wi-Fi അപ്രതീക്ഷിതമായി പ്രവർത്തനരഹിതമാകുന്നു. ഏത് വിഭാഗത്തെയാണ് ബന്ധപ്പെടേണ്ടത്?','Campus internet / Wi-Fi suddenly stops working. Which department should be contacted?'),
+    q(7,'A','short',1,'അംഗീകൃത ഔട്ട്‌പാസ് ഇല്ലാതെ ഒരു വിദ്യാർത്ഥി ക്യാമ്പസിൽ നിന്ന് പുറത്തുപോകാൻ ശ്രമിക്കുന്നു. ഗേറ്റ് നിയന്ത്രണത്തിന്റെ ഉടനടി ഉത്തരവാദിത്തം ഏത് വിഭാഗത്തിനാണ്?','A student attempts to leave campus without an approved out-pass. Which team is immediately responsible for gate control?'),
+    q(8,'A','short',1,'സ്റ്റാഫ് റിക്രൂട്ട്‌മെന്റുമായി ബന്ധപ്പെട്ട ഒരു വിഷയത്തിൽ സ്റ്റാറ്റസ് അപ്‌ഡേറ്റ് ആവശ്യമാണ്. ഏത് വിഭാഗത്തെയാണ് ബന്ധപ്പെടേണ്ടത്?','A status update is needed about staff recruitment. Which department should be contacted?'),
+    q(9,'A','short',1,'ഔദ്യോഗിക യാത്രയ്ക്കിടെ ക്യാമ്പസ് വാഹനത്തിന് പ്രവർത്തനപരമായ പ്രശ്നം ഉണ്ടാകുന്നു. ഏത് വിഭാഗത്തെയാണ് ബന്ധപ്പെടേണ്ടത്?','A campus vehicle develops an operational problem during an official trip. Which department should be contacted?'),
+    q(10,'A','short',1,'പ്രധാന ജലവിതരണ മോട്ടോർ അപ്രതീക്ഷിതമായി പ്രവർത്തനം നിർത്തുന്നു. ആദ്യം ഏത് വിഭാഗത്തെയാണ് ബന്ധപ്പെടേണ്ടത്?','The main water-supply motor unexpectedly stops. Which department should be contacted first?'),
+    q(11,'B','brief',2,'മുൻകൂട്ടി അറിയിക്കാത്ത ഒരു അതിഥി ക്യാമ്പസിൽ എത്തുന്നു. അതിഥിയെ സ്വീകരിക്കാനും സന്ദർശനം ഏകോപിപ്പിക്കാനും ഉടൻ സ്വീകരിക്കേണ്ട നടപടികൾ എന്തെല്ലാം?','An unannounced visitor arrives on campus. What immediate steps should be taken to receive the visitor and coordinate the visit?'),
+    q(12,'B','brief',2,'സ്റ്റാഫ് ഇന്റർവ്യൂവിനായി എത്തിയ ഒരു ഉദ്യോഗാർത്ഥി ഫ്രണ്ട് ഓഫീസിൽ രണ്ടുതവണ എത്തിയിട്ടും ആരും ശ്രദ്ധിച്ചില്ലെന്ന് പറയുന്നു. വിഷയം എങ്ങനെ കൈകാര്യം ചെയ്യണം? ഇന്റർവ്യൂവുമായി ബന്ധപ്പെട്ട കാര്യം ഏത് വിഭാഗമാണ് ഏകോപിപ്പിക്കേണ്ടത്?','A staff-interview candidate says nobody attended to them after two visits to the front office. How should this be handled, and which department should coordinate the interview?'),
+    q(13,'B','brief',2,'പെൺകുട്ടികളുടെ റെസിഡൻഷ്യൽ ക്യാമ്പസിൽ ഒരു വിദ്യാർത്ഥിക്ക് അപകടം സംഭവിച്ച് അടിയന്തരമായി ആശുപത്രിയിൽ പ്രവേശിപ്പിക്കേണ്ടിവരുന്നു. ഹോസ്റ്റൽ ഏരിയയിൽ പ്രവേശിക്കുന്നതിന് മുമ്പ് പാലിക്കേണ്ട അടിയന്തര റിപ്പോർട്ടിംഗ് / എൻട്രി പ്രോട്ടോക്കോൾ എന്താണ്?','A student is injured in the girls’ residential campus and urgently needs hospital admission. What emergency reporting and entry protocol should be followed before entering the hostel area?'),
+    q(14,'B','brief',2,'ഒരു രക്ഷിതാവ് മകളെ സംബന്ധിച്ച അടിയന്തര പരാതിയുമായി എത്തുന്നു. പരാതി ആദ്യം എങ്ങനെ സ്വീകരിക്കുകയും ശരിയായ വിഭാഗത്തിലേക്ക് കൈമാറുകയും വേണം?','A parent arrives with an urgent complaint concerning their daughter. How should the complaint be received and routed to the appropriate department?'),
+    q(15,'B','brief',2,'ഒരു ക്യാമ്പസ് പ്രോഗ്രാമിനിടെ പ്രധാന സൗകര്യം അപ്രതീക്ഷിതമായി തകരുന്നു. അഡ്മിനിസ്‌ട്രേഷൻ ആദ്യം സ്വീകരിക്കേണ്ട നടപടികൾ എന്തെല്ലാം?','A major facility unexpectedly fails during a campus programme. What should Administration do first?'),
+    q(16,'C','paragraph',4,'ഒരു വിദ്യാർത്ഥി അംഗീകൃത ഔട്ട്‌പാസ് ഇല്ലാതെ ക്യാമ്പസ് ഗേറ്റ് കടന്നുപോയി. നിയന്ത്രണത്തിലെ വീഴ്ച എവിടെയാണ് സംഭവിച്ചതെന്ന് എങ്ങനെ കണ്ടെത്തും? ഉത്തരവാദിത്തം എങ്ങനെ നിർണയിക്കും?','A student leaves through the campus gate without an approved out-pass. How would you identify where the control failed and determine responsibility?'),
+    q(17,'C','paragraph',4,'ഒരു വിഭാഗം നേരത്തെ സ്റ്റാഫ് ആവശ്യം സമർപ്പിച്ചിട്ടും അത് ഇതുവരെ പൂർത്തിയായിട്ടില്ല. യഥാർത്ഥ ആവശ്യം പരിശോധിക്കുന്നതും നിലവിലെ സ്ഥിതി കണ്ടെത്തുന്നതും വിഷയം പരിഹാരത്തിലേക്ക് കൊണ്ടുപോകുന്നതും എങ്ങനെ നടപ്പാക്കും?','A department submitted a staff requirement earlier, but it remains unfulfilled. Explain how you would verify the need, establish its current status and move it toward resolution.'),
+    q(18,'C','paragraph',4,'ബന്ധപ്പെട്ട ഓഫീസർ ലഭ്യമല്ലാത്ത സമയത്ത് ഒരു അപ്രതീക്ഷിത അതിഥി എത്തുന്നു. ബന്ധപ്പെട്ട വ്യക്തി ലഭ്യമാകുന്നതുവരെ ഫ്രണ്ട് ഓഫീസും അഡ്മിനിസ്‌ട്രേഷനും അതിഥിയെ എങ്ങനെ കൈകാര്യം ചെയ്യണം?','An unexpected visitor arrives while the responsible officer is unavailable. How should the front office and Administration manage the visit until that person is available?'),
+    q(19,'C','paragraph',4,'ഒരു ഹോസ്റ്റൽ പരാതി ആവർത്തിച്ച് റിപ്പോർട്ട് ചെയ്തിട്ടും “പരിഹരിച്ചു” എന്ന് രേഖപ്പെടുത്തിയിരിക്കുന്നു. എന്നാൽ വിദ്യാർത്ഥികൾ പ്രശ്നം തുടരുന്നതായി പറയുന്നു. യഥാർത്ഥ സ്ഥിതി പരിശോധിച്ച് പരിഹാരം ഉറപ്പാക്കുന്നത് എങ്ങനെ?','A hostel complaint has repeatedly been marked “resolved”, but students say the problem continues. How would you verify the real situation and ensure a genuine resolution?'),
+    q(20,'C','paragraph',4,'ഒരു വിഭാഗം മറ്റൊരു വിഭാഗം തങ്ങളുടെ അഭ്യർത്ഥനകൾക്ക് പ്രതികരിക്കുന്നില്ലെന്ന് പരാതിപ്പെടുന്നു. പ്രശ്നം ആശയവിനിമയത്തിലാണോ, ഉത്തരവാദിത്തത്തിലാണോ, ഫോളോ-അപ്പിലാണോ, നടപ്പാക്കലിലാണോ എന്ന് എങ്ങനെ കണ്ടെത്തും?','One department says another is not responding to its requests. How would you determine whether the failure is in communication, ownership, follow-up or execution?'),
+    q(21,'D','essay',10,'“നന്നായി നിയന്ത്രിക്കപ്പെട്ട ഒരു വിദ്യാഭ്യാസ സ്ഥാപനത്തിന്റെ നട്ടെല്ലാണ് അഡ്മിനിസ്‌ട്രേഷൻ.” ഡിപ്പാർട്ട്‌മെന്റ് കോഓർഡിനേഷൻ, SOP പാലിക്കൽ, പരാതി പരിഹാരം, അടിസ്ഥാന സൗകര്യങ്ങൾ, വിദ്യാർത്ഥി സേവനങ്ങൾ, ഡോക്യുമെന്റേഷൻ, ഫോളോ-അപ്പ്, പവർ ഫെയില്യർ കൈകാര്യം ചെയ്യൽ എന്നിവയുടെ പ്രാധാന്യം വിശദീകരിക്കുക.','“Administration is the backbone of a well-managed educational institution.” Explain its role in departmental coordination, SOP compliance, complaint resolution, infrastructure, student services, documentation, follow-up and managing power failures.'),
+    q(22,'E','paragraph',5,'പരിഹരിക്കപ്പെടാതെ കിടക്കുന്ന സ്റ്റാഫ് ആവശ്യം: ഒരു ഡിപ്പാർട്ട്‌മെന്റ് ഹെഡ് ഏതാനും ആഴ്ചകൾക്ക് മുമ്പ് അധിക സ്റ്റാഫ് ആവശ്യം സമർപ്പിച്ചെങ്കിലും ഇതുവരെ നടപടിയുണ്ടായിട്ടില്ലെന്ന് പറയുന്നു. ആവശ്യം എങ്ങനെ ട്രാക്ക് ചെയ്യും, രേഖകളും ഡാറ്റയും കണ്ടെത്തും, ഉത്തരവാദിത്തമുള്ള വിഭാഗവുമായി ഏകോപിപ്പിക്കും, വൈകലിന്റെ കാരണം കണ്ടെത്തും, വിഷയം എങ്ങനെ എസ്കലേറ്റ് ചെയ്യും?','Unresolved staff requirement: A department head says an additional-staff request submitted weeks ago has seen no action. Explain how you would track the request, gather records and data, coordinate with the responsible department, identify the delay and escalate it.'),
+    q(23,'E','paragraph',5,'ഔട്ട്‌പാസ് ഇല്ലാതെ വിദ്യാർത്ഥി പുറത്തുപോയി: ഒരു റെസിഡൻഷ്യൽ വിദ്യാർത്ഥി അംഗീകൃത ഔട്ട്‌പാസ് ഇല്ലാതെ പ്രധാന ഗേറ്റ് കടന്നുപോയതായി പിന്നീട് കണ്ടെത്തി. ഹോസ്റ്റൽ, മൂവ്‌മെന്റ് / ഔട്ട്‌പാസ് രേഖകൾ, ഫ്രണ്ട് ഓഫീസ്, സെക്യൂരിറ്റി / ഗേറ്റ്, മറ്റ് സ്റ്റാഫ് എന്നിവ ഉൾപ്പെടുന്ന മുഴുവൻ നടപടിക്രമം എങ്ങനെ അന്വേഷിക്കും? നിയന്ത്രണത്തിലെ വീഴ്ച കണ്ടെത്തി തിരുത്തൽ / പ്രതിരോധ നടപടികൾ എങ്ങനെ നടപ്പാക്കും?','A residential student is later found to have left through the main gate without an approved out-pass. How would you investigate the full chain, including hostel, movement/out-pass records, front office, security/gate and other staff, then implement corrective and preventive action?'),
+    q(24,'E','paragraph',5,'ആവർത്തിക്കുന്ന മെയിന്റനൻസ് പരാതി: ഒരേ മെയിന്റനൻസ് ആവശ്യം പലതവണ റിപ്പോർട്ട് ചെയ്തിട്ടും പരിഹരിച്ചിട്ടില്ലെന്ന് ഒരു വിഭാഗം പറയുന്നു. പരാതിയുടെ ചരിത്രം എങ്ങനെ പരിശോധിക്കും, മുൻഗണനയും ഉത്തരവാദിത്തവും എങ്ങനെ നിശ്ചയിക്കും, വൈകലിന്റെ കാരണം കണ്ടെത്തും, പരിഹാരത്തിനായി ഏകോപിപ്പിക്കും, രേഖാമൂലമുള്ള ക്ലോഷർ എങ്ങനെ ഉറപ്പാക്കും?','Recurring maintenance complaint: A department says the same issue has been reported several times but remains unresolved. Explain how you would review history, set priority and ownership, identify the delay, coordinate the fix and ensure documented closure.'),
+    q(25,'F','task',10,'അഡ്മിനിസ്‌ട്രേറ്റീവ് ആക്ഷൻ പ്ലാൻ: രാവിലെ അഡ്മിനിസ്‌ട്രേറ്റീവ് റൗണ്ടിനിടെ താഴെപ്പറയുന്ന പ്രശ്നങ്ങൾ ഒരേസമയം റിപ്പോർട്ട് ചെയ്യപ്പെടുന്നു. മുൻഗണനാക്രമം നിശ്ചയിച്ച് ഓരോ വിഷയത്തിനും ബന്ധപ്പെട്ട വിഭാഗം / വ്യക്തി, ഉടൻ സ്വീകരിക്കേണ്ട നടപടി, ആവശ്യമായ എസ്കലേഷൻ, ഫോളോ-അപ്പ്, ക്ലോഷറിന്റെ തെളിവ് എന്നിവ ഉൾപ്പെടുത്തി ആക്ഷൻ ഷീറ്റ് തയ്യാറാക്കുക.','Administrative action plan: During a morning administrative round, the following issues are reported at the same time. Prioritize them and prepare an action sheet for each, including owner, immediate action, escalation, follow-up and evidence of closure.',{taskItems:[
+      {key:'a',ml:'ഒരു വിദ്യാർത്ഥിയുടെ മെഡിക്കൽ എമർജൻസി',en:'A student medical emergency'},
+      {key:'b',ml:'പ്രധാന ജല മോട്ടോർ തകരാർ',en:'Main water motor failure'},
+      {key:'c',ml:'ഫ്രണ്ട് ഓഫീസിൽ കാത്തിരിക്കുന്ന അപ്രതീക്ഷിത അതിഥി',en:'An unexpected visitor waiting at the front office'},
+      {key:'d',ml:'പ്രധാന പ്രവർത്തന മേഖലയിലെ Wi-Fi തകരാർ',en:'Wi-Fi failure across a major operational area'},
+      {key:'e',ml:'അപ്‌ഡേറ്റ് ലഭിക്കാതെ കിടക്കുന്ന സ്റ്റാഫ് ആവശ്യം',en:'A staff requirement awaiting an update'},
+      {key:'f',ml:'വിദ്യാർത്ഥിയുടെ ഔട്ട്‌പാസുമായി ബന്ധപ്പെട്ട തർക്കം',en:'A dispute regarding a student out-pass'},
+      {key:'g',ml:'അടുക്കളയിലെ അടിയന്തര സാധനക്കുറവ്',en:'An urgent kitchen-supply shortage'},
+      {key:'h',ml:'മൂന്ന് ദിവസമായി തീർപ്പാകാത്ത മെയിന്റനൻസ് പരാതി',en:'A maintenance complaint unresolved for three days'}
+    ]}),
+    q(26,'G','choice',5,'ജല മോട്ടോർ തകരാർ: പ്രധാന ജല മോട്ടോർ അപ്രതീക്ഷിതമായി തകരുന്നു; ഹോസ്റ്റലിൽ ഉടൻ വെള്ളം തീരാൻ സാധ്യതയുണ്ട്. ഏറ്റവും അനുയോജ്യമായ നടപടി തിരഞ്ഞെടുക്കുക.','Water motor failure: The main water motor unexpectedly fails and the hostel may soon run out of water. Choose the most appropriate response.',{options:[
+      {key:'A',ml:'IMF-ൽ പരാതി രജിസ്റ്റർ ചെയ്ത് മോട്ടോർ നന്നാകുന്നതുവരെ കാത്തിരിക്കുക.',en:'Register a complaint with IMF and wait until the motor is repaired.'},
+      {key:'B',ml:'ഉടൻ IMF-നെ അറിയിക്കുക; ലഭ്യമായ വെള്ളവും സ്റ്റോറേജും അറ്റകുറ്റപ്പണി സമയവും വിലയിരുത്തുക; താൽക്കാലികമോ പകരമോ ആയ ജലവിതരണം ഒരുക്കി നിർണായക മേഖലകൾക്ക് മുൻഗണന നൽകുക; സാധാരണ വിതരണം പുനഃസ്ഥാപിക്കുന്നതുവരെ നിരീക്ഷിക്കുക.',en:'Notify IMF immediately; assess available water, storage and repair time; arrange temporary or backup supply, prioritize critical areas and monitor until normal supply is restored.'},
+      {key:'C',ml:'എല്ലാ വിഭാഗങ്ങളോടും വെള്ളം കുറച്ച് ഉപയോഗിക്കാൻ പറയുകയും അടുത്ത പവർ ഷട്ട്ഡൗൺ സമയം വരെ കാത്തിരിക്കുകയും ചെയ്യുക.',en:'Ask every department to reduce water use and wait until the next power shutdown window.'}
+    ],correct:'B'}),
+    q(27,'G','choice',5,'വൈദ്യുതി, ജനറേറ്റർ തകരാർ: പൂർണ്ണമായ വൈദ്യുതി മുടക്കവും ജനറേറ്റർ പ്രവർത്തനരഹിതമാകുന്നതും ഒരേസമയം സംഭവിക്കുന്നു. ഏറ്റവും അനുയോജ്യമായ നടപടി തിരഞ്ഞെടുക്കുക.','Power and generator failure: A complete power outage occurs while the generator is also unavailable. Choose the most appropriate response.',{options:[
+      {key:'A',ml:'IMF-നെ ബന്ധപ്പെട്ടു സാങ്കേതിക സ്ഥിരീകരണം ലഭിക്കുന്നതുവരെ മറ്റൊരു നടപടിയും സ്വീകരിക്കാതിരിക്കുക.',en:'Contact IMF and take no other action until technical confirmation is received.'},
+      {key:'B',ml:'ഉടൻ IMF-നെ സജീവമാക്കുക; ആവശ്യമായ ലോഡുകളും സേവനങ്ങളും തിരിച്ചറിയുക; ലഭ്യമായ ബാക്കപ്പിലൂടെയോ പകരം സംവിധാനത്തിലൂടെയോ നിർണായക സേവനങ്ങൾ പ്രവർത്തിപ്പിക്കുക; ബന്ധപ്പെട്ട വിഭാഗങ്ങളെ അറിയിക്കുമ്പോൾ ജനറേറ്റർ പുനഃസ്ഥാപിക്കാൻ നടപടി തുടരുക.',en:'Activate IMF immediately; identify critical loads and services; use available backup or alternate power for essential services; inform departments and work to restore the generator.'},
+      {key:'C',ml:'വൈദ്യുതി തിരികെ വരുന്നതുവരെ ഓരോ വിഭാഗവും സ്വയം സാഹചര്യം കൈകാര്യം ചെയ്യാൻ ആവശ്യപ്പെടുക.',en:'Ask each department to manage the situation on its own until power returns.'}
+    ],correct:'B'}),
+    q(28,'G','choice',5,'IT / Wi-Fi തകരാർ: പ്രധാന പ്രവർത്തന മേഖലയിലുടനീളം Wi-Fi ലഭ്യമല്ലെന്നും ഉടൻ പരിഹരിക്കാൻ കഴിയില്ലെന്നും IT ടീം അറിയിക്കുന്നു. ഏറ്റവും അനുയോജ്യമായ നടപടി തിരഞ്ഞെടുക്കുക.','IT / Wi-Fi failure: Wi-Fi is unavailable across a major operational area and the IT team says an immediate fix is not possible. Choose the most appropriate response.',{options:[
+      {key:'A',ml:'നെറ്റ്‌വർക്ക് ആവശ്യമുള്ള എല്ലാ ജോലികളും റദ്ദാക്കി Wi-Fi പുനഃസ്ഥാപിക്കുന്നതുവരെ കാത്തിരിക്കുക.',en:'Cancel all network-dependent work and wait until Wi-Fi is restored.'},
+      {key:'B',ml:'അടിയന്തരതയും ബാധിക്കപ്പെട്ട സേവനങ്ങളും വിലയിരുത്തുക; IT ടീമിനോട് തകരാർ കണ്ടെത്താനും ആവശ്യമായിടത്ത് എസ്കലേറ്റ് ചെയ്യാനും ആവശ്യപ്പെടുക; അത്യാവശ്യ ജോലികൾക്ക് അംഗീകൃത താൽക്കാലിക പകരം സംവിധാനം ഒരുക്കി പുനഃസ്ഥാപനം ട്രാക്ക് ചെയ്യുക.',en:'Assess urgency and affected services; ask IT to diagnose and escalate; arrange an approved temporary alternative for essential work and track restoration.'},
+      {key:'C',ml:'കൂടുതൽ ഏകോപനമില്ലാതെ ജീവനക്കാരെ വ്യക്തിഗത ഹോട്ട്‌സ്‌പോട്ടുകളോ അംഗീകൃതമല്ലാത്ത നെറ്റ്‌വർക്കുകളോ ഉപയോഗിക്കാൻ അനുവദിക്കുക.',en:'Allow staff to use personal hotspots or unapproved networks without coordination.'}
+    ],correct:'B'}),
+    q(29,'G','choice',5,'അപ്രതീക്ഷിത ഹെൽത്ത് ഇൻസ്‌പെക്ഷൻ: മുൻകൂട്ടി അറിയിക്കാതെ ഒരു ഹെൽത്ത് ഇൻസ്‌പെക്ടർ ഔദ്യോഗിക ക്യാമ്പസ് പരിശോധനയ്ക്ക് എത്തുന്നു. ഏറ്റവും അനുയോജ്യമായ നടപടി തിരഞ്ഞെടുക്കുക.','Unexpected health inspection: A health inspector arrives for an official campus inspection without prior notice. Choose the most appropriate response.',{options:[
+      {key:'A',ml:'സൗകര്യപ്രദമായ സമയം വരുന്നതുവരെ കാത്തിരിക്കാൻ ഇൻസ്‌പെക്ടറോട് ആവശ്യപ്പെട്ട് സന്ദർശനം വൈകിപ്പിക്കുക.',en:'Ask the inspector to wait until a convenient time and delay the visit.'},
+      {key:'B',ml:'ഉത്തരവാദിത്തമുള്ള ക്യാമ്പസ് അധികാരിയെ ഉടൻ അറിയിക്കുക; ഇൻസ്‌പെക്ടറെ പ്രൊഫഷണലായി സ്വീകരിക്കുക; ബന്ധപ്പെട്ട വിഭാഗങ്ങളെ അറിയിച്ച് ആവശ്യമായ രേഖകളും പ്രവേശന സൗകര്യങ്ങളും ഒരുക്കി സന്ദർശനം ഏകോപിപ്പിക്കുക.',en:'Immediately notify the responsible campus authority; receive the inspector professionally; inform relevant departments, prepare required records and access, and coordinate the visit.'},
+      {key:'C',ml:'ക്യാമ്പസ് തല ഏകോപനമില്ലാതെ ഇൻസ്‌പെക്ടറെ നേരിട്ട് ഏതെങ്കിലും വിഭാഗത്തിലേക്ക് അയയ്ക്കുക.',en:'Send the inspector directly to a department without campus-level coordination.'}
+    ],correct:'B'}),
+    q(30,'G','choice',5,'പെൺകുട്ടികളുടെ ഹോസ്റ്റലിലെ മെഡിക്കൽ എമർജൻസി: ഹോസ്റ്റലിനുള്ളിൽ ഒരു വിദ്യാർത്ഥിക്ക് അപകടം സംഭവിച്ച് അടിയന്തര സഹായം ആവശ്യമാണ്. ഏറ്റവും അനുയോജ്യമായ നടപടി തിരഞ്ഞെടുക്കുക.','Medical emergency in the girls’ hostel: A student is injured inside the hostel and needs urgent help. Choose the most appropriate response.',{options:[
+      {key:'A',ml:'ആരെയും അറിയിക്കാതെ അടിയന്തരാവസ്ഥയായതിനാൽ ഉടൻ ഹോസ്റ്റലിൽ പ്രവേശിക്കുക.',en:'Enter the hostel immediately without notifying anyone because it is an emergency.'},
+      {key:'B',ml:'ഉടൻ മെഡിക്കൽ സഹായം സജീവമാക്കുക; ഉത്തരവാദിത്തമുള്ള ഹോസ്റ്റൽ / ക്യാമ്പസ് അധികാരിയെ അറിയിക്കുക; ഹോസ്റ്റലിന്റെ അടിയന്തര പ്രവേശന പ്രോട്ടോക്കോൾ പാലിച്ചുകൊണ്ട് ചികിത്സ, എസ്കലേഷൻ, ഡോക്യുമെന്റേഷൻ, ആവശ്യമായ ആശയവിനിമയം എന്നിവ ഉറപ്പാക്കുക.',en:'Activate medical help immediately; notify the responsible hostel/campus authority; follow the hostel emergency-entry protocol and ensure treatment, escalation, documentation and necessary communication.'},
+      {key:'C',ml:'രക്ഷിതാവ് എത്തി അനുമതി നൽകുന്നതുവരെ ഹോസ്റ്റലിന് പുറത്ത് കാത്തിരിക്കുക.',en:'Wait outside the hostel until a parent arrives and gives permission.'}
+    ],correct:'B'})
+  ];
+  const strings = {
+    hub:{ml:'ലേണിംഗ് ഹബ്',en:'LEARNING HUB'}, dashboard:{ml:'ഹോം',en:'Home'}, assessmentLabel:{ml:'വർക്ക്‌ഷോപ്പിന് ശേഷമുള്ള അസസ്‌മെന്റ്',en:'POST-WORKSHOP ASSESSMENT'}, titleLine1:{ml:'അഡ്മിനിസ്‌ട്രേഷൻ',en:'Administration'}, titleLine2:{ml:'ജനറൽ ഇൻഡക്ഷൻ',en:'General Induction'}, heroDesc:{ml:'ക്യാമ്പസ് അഡ്മിനിസ്‌ട്രേഷനിലെ ഏകോപനം, സുരക്ഷ, ഉത്തരവാദിത്തം എന്നിവയ്ക്കുള്ള നിങ്ങളുടെ തയ്യാറെടുപ്പ് വിലയിരുത്തുക.',en:'Check your readiness for coordinated, safe and accountable campus administration.'},startAssessment:{ml:'അസസ്‌മെന്റ് ആരംഭിക്കുക',en:'Start assessment'},yourAssessment:{ml:'നിങ്ങളുടെ അസസ്‌മെന്റ്',en:'Your assessment'},notStarted:{ml:'ആരംഭിച്ചിട്ടില്ല',en:'Not started'},inProgress:{ml:'തുടരുന്നു',en:'In progress'},completed:{ml:'പൂർത്തിയായി',en:'Completed'},minutes:{ml:'മിനിറ്റ്',en:'minutes'},totalMarks:{ml:'ആകെ മാർക്ക്',en:'total marks'},questions:{ml:'ചോദ്യങ്ങൾ',en:'questions'},yourProgress:{ml:'നിങ്ങളുടെ പുരോഗതി',en:'Your progress'},fullName:{ml:'പൂർണ്ണനാമം',en:'Full name'},date:{ml:'തീയതി',en:'Date'},continueAssessment:{ml:'അസസ്‌മെന്റ് തുടരുക',en:'Continue assessment'},assessmentStructure:{ml:'അസസ്‌മെന്റിന്റെ ഘടന',en:'Assessment structure'},sectionsHint:{ml:'നൽകിയിരിക്കുന്ന അസസ്‌മെന്റിലെ ഏഴ് വിഭാഗങ്ങൾ.',en:'Seven sections, following the uploaded assessment.'},marks:{ml:'മാർക്ക്',en:'marks'},sourceNote:{ml:'ഈ ഡിജിറ്റൽ പേജ് നൽകിയ Post Workshop Assessment അടിസ്ഥാനമാക്കിയുള്ളതാണ്. വിഭാഗങ്ങളുടെ പേരുകൾ സോഴ്‌സിൽ നൽകിയിട്ടില്ലാത്തതിനാൽ ആദ്യ വിഭാഗത്തിലെ ഉത്തരങ്ങൾ ടെക്സ്റ്റായി നൽകാം. എഴുത്തുപരമായ ഉത്തരങ്ങൾ അസസർ പരിശോധിക്കണം.',en:'This digital page is based on the supplied Post Workshop Assessment. Department names are free-text because the source does not provide a department list. Written responses need assessor review.'},localNote:{ml:'ഈ ഉപകരണത്തിലെ ബ്രൗസറിലാണ് പുരോഗതി സൂക്ഷിക്കുന്നത്. അക്കൗണ്ടോ സർവർ കണക്ഷനോ ഉൾപ്പെടുത്തിയിട്ടില്ല.',en:'Progress saves in this browser on this device. No account or server connection is included.'},questionMap:{ml:'ചോദ്യ പട്ടിക',en:'Question map'},previous:{ml:'മുൻപ്',en:'Previous'},next:{ml:'അടുത്തത്',en:'Next'},savedOnDevice:{ml:'ഈ ഉപകരണത്തിൽ സേവ് ചെയ്തു',en:'Saved on this device'},completion:{ml:'പൂർത്തീകരണം',en:'Completion'},answered:{ml:'ഉത്തരം നൽകിയവ',en:'Answered'},remaining:{ml:'ബാക്കി',en:'Remaining'},completionHint:{ml:'നിങ്ങൾ എഴുതുന്നതിനനുസരിച്ച് ഉത്തരങ്ങൾ സ്വയം സേവ് ചെയ്യും.',en:'Your answers save automatically as you work.'},jumpToQuestion:{ml:'ചോദ്യത്തിലേക്ക് പോകുക',en:'Jump to question'},mapHint:{ml:'പച്ച നിറമുള്ളവയ്ക്ക് ഉത്തരം നൽകിയിട്ടുണ്ട്. നിറച്ച നമ്പർ നിലവിലെ ചോദ്യമാണ്.',en:'Green means answered. The filled number is the question you are viewing.'},backToQuestions:{ml:'ചോദ്യങ്ങളിലേക്ക് മടങ്ങുക',en:'Back to questions'},finalReview:{ml:'അവസാന പരിശോധന',en:'FINAL REVIEW'},reviewTitle:{ml:'നിങ്ങളുടെ അസസ്‌മെന്റ് പരിശോധിക്കുക',en:'Review your assessment'},questionsAnswered:{ml:'ഉത്തരം നൽകിയ ചോദ്യങ്ങൾ',en:'Questions answered'},autoScore:{ml:'ഓട്ടോ മാർക്ക് ചെയ്യുന്ന കേസ് ചോദ്യങ്ങൾ',en:'Case questions auto-score'},manualMarks:{ml:'മാനുവൽ പരിശോധനയ്ക്കുള്ള മാർക്ക്',en:'Marks for manual review'},sectionStatus:{ml:'വിഭാഗങ്ങളുടെ നില',en:'Section status'},gradingNote:{ml:'നൽകിയ സോഴ്‌സിലെ ഓപ്ഷനുകൾ അടിസ്ഥാനമാക്കി വിഭാഗം G മാത്രമാണ് സ്വയം മാർക്ക് ചെയ്യുന്നത്. A മുതൽ F വരെയുള്ള വിഭാഗങ്ങൾക്ക് പൂർണ്ണ ഉത്തരസൂചിക നൽകിയിട്ടില്ലാത്തതിനാൽ മാനുവൽ മൂല്യനിർണയം ആവശ്യമാണ്.',en:'Only Section G is automatically marked, based on the options in the supplied source. Sections A to F require manual marking; no answer key was supplied for them.'},editAnswers:{ml:'ഉത്തരങ്ങൾ തിരുത്തുക',en:'Edit answers'},completeAssessment:{ml:'അസസ്‌മെന്റ് പൂർത്തിയാക്കുക',en:'Complete assessment'},exportAnswers:{ml:'ഉത്തരങ്ങൾ എക്സ്പോർട്ട് ചെയ്യുക',en:'Export answers'},printReview:{ml:'പരിശോധന പ്രിന്റ് ചെയ്യുക',en:'Print review'},assessmentSaved:{ml:'അസസ്‌മെന്റ് ഈ ഉപകരണത്തിൽ സേവ് ചെയ്തു',en:'Assessment saved on this device'},submittedNote:{ml:'എഴുത്തുപരമായ ഉത്തരങ്ങൾ അസസർ പരിശോധിക്കണം. പങ്കിടുന്നതിനായി ഉത്തരങ്ങളുടെ ഫയൽ എക്സ്പോർട്ട് ചെയ്യുക.',en:'Your written answers need to be reviewed by an assessor. Export the answer record to share it.'},closeMap:{ml:'പട്ടിക അടയ്ക്കുക',en:'Close map'},marksLabel:{ml:'മാർക്ക്',en:'marks'},questionLabel:{ml:'ചോദ്യം',en:'Question'},answerPlaceholder:{ml:'നിങ്ങളുടെ ഉത്തരം ഇവിടെ എഴുതുക…',en:'Write your answer here…'},briefHint:{ml:'ഒറ്റവരി അല്ലെങ്കിൽ ചുരുക്കത്തിലുള്ള മറുപടി നൽകുക.',en:'Write a one-line or concise response.'},paragraphHint:{ml:'നടപടികൾ, ഉത്തരവാദിത്തം, രേഖപ്പെടുത്തൽ, ഫോളോ-അപ്പ് എന്നിവ ഉൾപ്പെടുത്തുക.',en:'Include actions, ownership, documentation and follow-up.'},essayHint:{ml:'ചുരുങ്ങിയ ലേഖനമായി വിശദീകരിക്കുക.',en:'Explain in a short essay.'},selectOption:{ml:'ഏറ്റവും അനുയോജ്യമായ ഓപ്ഷൻ തിരഞ്ഞെടുക്കുക.',en:'Select the most appropriate option.'},responsible:{ml:'ബന്ധപ്പെട്ട വിഭാഗം / വ്യക്തി',en:'Responsible department / person'},immediate:{ml:'ഉടൻ സ്വീകരിക്കേണ്ട നടപടി',en:'Immediate action'},escalation:{ml:'എസ്കലേഷൻ ആവശ്യമെങ്കിൽ',en:'Escalation if needed'},followup:{ml:'ഫോളോ-അപ്പ്',en:'Follow-up'},evidence:{ml:'ക്ലോഷർ തെളിവ്',en:'Evidence of closure'},unanswered:{ml:'ഉത്തരം നൽകാത്തത്',en:'Unanswered'},answeredLabel:{ml:'ഉത്തരം നൽകി',en:'Answered'},notAnsweredLabel:{ml:'ഇനിയും ഉത്തരം നൽകിയിട്ടില്ല',en:'Not answered'},resumeAssessment:{ml:'നിങ്ങളുടെ അവസാന ചോദ്യത്തിൽ നിന്ന് തുടരാം.',en:'You can continue from where you left off.'},confirmIncomplete:{ml:'ചില ചോദ്യങ്ങൾക്കു മറുപടി നൽകിയിട്ടില്ല. ഇപ്പോഴും പൂർത്തിയാക്കണോ?',en:'Some questions are unanswered. Complete the assessment anyway?'},submittedToast:{ml:'അസസ്‌മെന്റ് സേവ് ചെയ്തു',en:'Assessment saved'},exportToast:{ml:'ഉത്തരങ്ങളുടെ ഫയൽ ഡൗൺലോഡ് ചെയ്തു',en:'Answer record downloaded'},nameHint:{ml:'ദയവായി ആദ്യം നിങ്ങളുടെ പേര് നൽകുക.',en:'Please enter your name first.'},taskOwner:{ml:'ഓരോ വിഷയത്തിന്റെയും എല്ലാ ഫീൽഡുകളും പൂരിപ്പിക്കുക.',en:'Complete the fields for each issue.'},objectiveScore:{ml:'സെക്ഷൻ G-യിലെ ശരിയുത്തരങ്ങൾ',en:'Correct answers in Section G'},manualPending:{ml:'75 മാർക്ക് മാനുവൽ പരിശോധനയ്ക്കായി മാറ്റിവച്ചിരിക്കുന്നു.',en:'75 marks remain for manual review.'},status:{ml:'നില',en:'Status'},questionRange:{ml:'ചോദ്യങ്ങൾ',en:'Questions'}
+  };
+  let lang = 'ml';
+  let state = {name:'',date:todayStr,answers:{},lastIndex:0,started:false,submittedAt:null};
+  try { const saved = JSON.parse(localStorage.getItem(STORE_KEY) || 'null'); if(saved && typeof saved==='object'){ state={...state,...saved,answers:saved.answers||{}}; } } catch(e) {}
+  if(!state.date) state.date = todayStr;
+  const el = id => document.getElementById(id);
+  const esc = v => String(v ?? '').replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const tx = (key) => strings[key]?.[lang] ?? key;
+  const textOf = (obj) => typeof obj === 'string' ? obj : (obj?.[lang] ?? obj?.en ?? '');
+  const getQuestion = () => questions[Math.max(0,Math.min(questions.length-1,state.lastIndex))];
+  function save(){ try{localStorage.setItem(STORE_KEY,JSON.stringify(state));}catch(e){} }
+  function showToast(message){const t=el('toast');t.textContent=message;t.classList.add('show');clearTimeout(showToast.t);showToast.t=setTimeout(()=>t.classList.remove('show'),2200)}
+  function isAnswered(question){
+    const a=state.answers[question.id];
+    if(question.type==='task') return (question.taskItems||[]).every(item=>String(a?.[item.key]?.action||'').trim().length>0);
+    if(question.type==='choice') return Boolean(a);
+    return typeof a==='string' && a.trim().length>0;
+  }
+  function answeredCount(){return questions.reduce((n,question)=>n+(isAnswered(question)?1:0),0)}
+  function currentSection(){return sections.find(s=>s.id===getQuestion().sec)}
+  function sectionAnswered(section){return questions.filter(x=>x.sec===section.id&&isAnswered(x)).length}
+  function sectionTotal(section){return questions.filter(x=>x.sec===section.id).length}
+  function objectiveScore(){return questions.filter(x=>x.sec==='G').reduce((sum,x)=>sum+(state.answers[x.id]===x.correct?x.marks:0),0)}
+  function answeredMarks(section){return questions.filter(x=>x.sec===section.id&&isAnswered(x)).reduce((sum,x)=>sum+x.marks,0)}
+  function setLanguage(next){lang=next;document.documentElement.lang=lang;el('language-toggle').textContent=lang==='ml'?'English':'മലയാളം';document.querySelectorAll('[data-t]').forEach(node=>{const key=node.getAttribute('data-t');if(strings[key])node.textContent=tx(key)});renderHomeSections();updateHome();if(el('quiz-screen').classList.contains('active'))renderQuestion();if(el('review-screen').classList.contains('active'))renderReview()}
+  function showScreen(screen){['home-screen','quiz-screen','review-screen'].forEach(id=>el(id).classList.toggle('active',id===screen));el('home-top-btn').classList.toggle('hide',screen==='home-screen');window.scrollTo({top:0,behavior:'smooth'});}
+  function updateHome(){
+    el('learner-name').value=state.name||'';el('assessment-date').value=state.date||todayStr;
+    const done=answeredCount(), pct=Math.round(done/questions.length*100);
+    el('home-progress-label').textContent=pct+'%';el('home-progress-fill').style.width=pct+'%';el('home-progress').setAttribute('aria-valuenow',String(pct));
+    el('home-status').textContent=state.submittedAt?tx('completed'):(state.started?tx('inProgress'):tx('notStarted'));
+    el('start-btn').querySelector('[data-t]').textContent=state.started?tx('continueAssessment'):tx('startAssessment');
+    el('continue-btn').disabled=!state.started&&!done&&!state.submittedAt;
+    if(state.started||done||state.submittedAt){el('continue-btn').disabled=false;el('continue-btn').querySelector('[data-t]').textContent=tx('continueAssessment')}
+  }
+  function renderHomeSections(){
+    el('home-sections').innerHTML=sections.map(s=>`<button type="button" class="section-row" data-section-start="${s.id}" aria-label="${esc(textOf({ml:s.ml,en:s.en}))}"><span class="section-letter">${s.id}</span><span><strong>${esc(textOf({ml:s.ml,en:s.en}))}</strong><small>${lang==='ml'?s.countMl:s.count} · ${s.first===s.last?s.first:`${s.first}-${s.last}`}</small></span><span class="mark-chip">${s.marks} ${esc(tx('marks'))}</span></button>`).join('');
+  }
+  function renderTask(question){
+    const a=state.answers[question.id]||{};
+    const labels=[['dept','responsible'],['action','immediate'],['escalation','escalation'],['followup','followup'],['evidence','evidence']];
+    return `<p class="task-intro">${esc(tx('taskOwner'))}</p><div class="task-grid">${question.taskItems.map(item=>`<section class="task-item"><div class="task-item-head"><span class="task-code">${item.key.toUpperCase()}</span><h3>${esc(textOf(item))}</h3></div><div class="task-fields">${labels.map(([field,label])=>`<div class="field"><label>${esc(tx(label))}</label>${field==='action'||field==='evidence'?`<textarea data-task-key="${item.key}" data-field="${field}" rows="2" placeholder="${esc(tx('answerPlaceholder'))}">${esc(a[item.key]?.[field]||'')}</textarea>`:`<input data-task-key="${item.key}" data-field="${field}" value="${esc(a[item.key]?.[field]||'')}" placeholder="${esc(tx('answerPlaceholder'))}">`}</div>`).join('')}</div></section>`).join('')}</div>`;
+  }
+  function renderQuestion(){
+    const question=getQuestion(), section=sections.find(s=>s.id===question.sec), index=state.lastIndex;
+    el('question-counter').textContent=`${tx('questionLabel')} ${question.id} ${lang==='ml'?' / ':'of '}${questions.length}`;
+    el('question-progress-fill').style.width=((index+1)/questions.length*100)+'%';
+    el('prev-btn').disabled=index===0;
+    el('next-btn').innerHTML=index===questions.length-1?`${esc(tx('finalReview'))} →`:`${esc(tx('next'))} →`;
+    el('side-answered').textContent=`${answeredCount()} / ${questions.length}`;
+    el('side-remaining').textContent=String(questions.length-answeredCount());
+    el('side-progress-fill').style.width=(answeredCount()/questions.length*100)+'%';
+    el('question-card').innerHTML=`<div class="q-meta"><span class="section-tag">${esc(section.id)} · ${esc(textOf({ml:section.ml,en:section.en}))}</span><span class="points-tag">${question.marks} ${esc(tx('marks'))}</span></div><h2 class="question-title">${question.id}. ${esc(textOf({ml:question.ml,en:question.en}))}</h2>${lang==='ml'?`<p class="question-english">${esc(question.en)}</p>`:''}<div class="answer-area">${renderAnswer(question)}</div>`;
+    renderQuestionMap();el('save-status').textContent=tx('savedOnDevice');
+  }
+  function renderAnswer(question){
+    const val=state.answers[question.id]||'';
+    if(question.type==='short') return `<p class="answer-hint">${esc(tx('briefHint'))}</p><input class="answer-input" id="simple-answer" data-answer-id="${question.id}" type="text" maxlength="1500" value="${esc(val)}" placeholder="${esc(tx('answerPlaceholder'))}" autocomplete="off">`;
+    if(question.type==='brief') return `<p class="answer-hint">${esc(tx('briefHint'))}</p><textarea class="answer-input" id="simple-answer" data-answer-id="${question.id}" rows="3" maxlength="4000" placeholder="${esc(tx('answerPlaceholder'))}">${esc(val)}</textarea>`;
+    if(question.type==='paragraph') return `<p class="answer-hint">${esc(tx('paragraphHint'))}</p><textarea class="answer-input" id="simple-answer" data-answer-id="${question.id}" rows="7" maxlength="10000" placeholder="${esc(tx('answerPlaceholder'))}">${esc(val)}</textarea>`;
+    if(question.type==='essay') return `<p class="answer-hint">${esc(tx('essayHint'))}</p><textarea class="answer-input essay" id="simple-answer" data-answer-id="${question.id}" rows="10" maxlength="16000" placeholder="${esc(tx('answerPlaceholder'))}">${esc(val)}</textarea>`;
+    if(question.type==='task') return renderTask(question);
+    if(question.type==='choice') return `<p class="answer-hint">${esc(tx('selectOption'))}</p><div class="choice-list">${question.options.map(o=>`<label class="choice"><input type="radio" name="choice-${question.id}" data-choice-id="${question.id}" value="${o.key}" ${val===o.key?'checked':''}><span class="choice-letter">${o.key}</span><span class="choice-copy">${esc(textOf(o))}</span></label>`).join('')}</div>`;
+    return '';
+  }
+  function renderQuestionMap(){
+    el('question-map').innerHTML=questions.map((question,index)=>`<button type="button" class="map-num ${isAnswered(question)?'answered':''} ${index===state.lastIndex?'current':''}" data-jump="${index}" aria-label="${esc(tx('questionLabel'))} ${question.id}${isAnswered(question)?', '+esc(tx('answeredLabel')):''}" aria-current="${index===state.lastIndex?'step':'false'}">${question.id}</button>`).join('');
+  }
+  function renderReview(){
+    const done=answeredCount();el('review-answered').textContent=`${done} / ${questions.length}`;el('review-objective').textContent=`${objectiveScore()} / 25`;
+    el('review-intro').textContent=state.submittedAt?`${state.name||''} · ${state.date||''} · ${lang==='ml'?'സമർപ്പിച്ചത്':'Saved'} ${new Date(state.submittedAt).toLocaleString(lang==='ml'?'ml-IN':'en-IN')}`:(lang==='ml'?`നിങ്ങൾ ${done} / ${questions.length} ചോദ്യങ്ങൾക്ക് മറുപടി നൽകി.`:`You have answered ${done} of ${questions.length} questions.`);
+    el('review-sections').innerHTML=sections.map(s=>{const total=sectionTotal(s),answered=sectionAnswered(s);const mark=answered===total?tx('answeredLabel'):tx('unanswered');return `<div class="review-section"><span class="section-letter">${s.id}</span><span><strong>${esc(textOf({ml:s.ml,en:s.en}))}</strong><small>${lang==='ml'?s.countMl:s.count} · ${s.marks} ${esc(tx('marks'))}</small></span><span class="mark-chip">${answered}/${total}</span></div>`}).join('');
+    el('submission-result').classList.toggle('hide',!state.submittedAt);el('submit-btn').classList.toggle('hide',!!state.submittedAt);el('export-btn').classList.toggle('hide',!state.submittedAt);el('print-btn').classList.toggle('hide',!state.submittedAt);
+    el('edit-answers-btn').textContent=tx('editAnswers');
+  }
+  function startAssessment(){
+    state.name=el('learner-name').value.trim();state.date=el('assessment-date').value||todayStr;
+    if(!state.name){el('learner-name').focus();showToast(tx('nameHint'));return}
+    state.started=true;if(state.lastIndex<0||state.lastIndex>=questions.length)state.lastIndex=0;save();showScreen('quiz-screen');renderQuestion();
+  }
+  function syncSimpleAnswer(target){const id=Number(target.dataset.answerId);state.answers[id]=target.value;save();updateQuestionStatusOnly()}
+  function updateQuestionStatusOnly(){
+    const done=answeredCount();el('side-answered').textContent=`${done} / ${questions.length}`;el('side-remaining').textContent=String(questions.length-done);el('side-progress-fill').style.width=(done/questions.length*100)+'%';renderQuestionMap();el('save-status').textContent=tx('savedOnDevice');
+  }
+  function updateTaskAnswer(target){const qid=Number(getQuestion().id);if(!state.answers[qid]||typeof state.answers[qid]!=='object')state.answers[qid]={};const key=target.dataset.taskKey,field=target.dataset.field;if(!state.answers[qid][key])state.answers[qid][key]={};state.answers[qid][key][field]=target.value;save();updateQuestionStatusOnly()}
+  function goTo(index){state.lastIndex=Math.max(0,Math.min(questions.length-1,index));save();renderQuestion();window.scrollTo({top:0,behavior:'smooth'})}
+  function goReview(){state.name=el('learner-name').value.trim()||state.name;state.date=el('assessment-date').value||state.date;save();showScreen('review-screen');renderReview()}
+  function exportAnswers(){
+    const record={title:'Administration - General Induction Post Workshop Assessment',organisation:'Zaitoon Foundation',learner:{name:state.name,date:state.date},submittedAt:state.submittedAt,summary:{questions:questions.length,answered:answeredCount(),sectionGScore:objectiveScore(),sectionGMax:25,manualReviewMax:75},answers:questions.map(question=>({questionNumber:question.id,section:question.sec,marks:question.marks,questionEnglish:question.en,questionMalayalam:question.ml,answer:state.answers[question.id]??null,correctOption:question.correct||undefined,autoMarked:question.sec==='G'}))};
+    const blob=new Blob([JSON.stringify(record,null,2)],{type:'application/json;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=`General_Induction_${(state.name||'Learner').trim().replace(/[^\w-]+/g,'_')}_${state.date||todayStr}.json`;document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);showToast(tx('exportToast'));
+  }
+  // Initial setup and events
+  el('assessment-date').value=state.date;
+  el('learner-name').value=state.name||'';
+  renderHomeSections();updateHome();setLanguage('ml');
+  el('language-toggle').addEventListener('click',()=>setLanguage(lang==='ml'?'en':'ml'));
+  el('learner-name').addEventListener('input',e=>{state.name=e.target.value;save();updateHome()});
+  el('assessment-date').addEventListener('change',e=>{state.date=e.target.value||todayStr;save()});
+  el('start-btn').addEventListener('click',startAssessment);
+  el('continue-btn').addEventListener('click',()=>{if(!state.name){el('learner-name').focus();showToast(tx('nameHint'));return}showScreen(state.submittedAt?'review-screen':'quiz-screen');state.submittedAt?renderReview():renderQuestion()});
+  el('back-home').addEventListener('click',()=>{save();showScreen('home-screen');updateHome()});
+  el('home-top-btn').addEventListener('click',()=>{showScreen('home-screen');updateHome()});
+  el('prev-btn').addEventListener('click',()=>goTo(state.lastIndex-1));
+  el('next-btn').addEventListener('click',()=>{if(state.lastIndex===questions.length-1)goReview();else goTo(state.lastIndex+1)});
+  el('open-map').addEventListener('click',()=>{const sidebar=document.querySelector('.quiz-sidebar');if(window.matchMedia('(max-width: 800px)').matches){sidebar.classList.add('mobile-open');el('close-map').focus()}else{const map=el('question-map');map.scrollIntoView({behavior:'smooth',block:'center'});map.querySelector('.current')?.focus()}});
+  el('close-map').addEventListener('click',()=>{document.querySelector('.quiz-sidebar').classList.remove('mobile-open');el('open-map').focus()});
+  el('question-card').addEventListener('input',e=>{const target=e.target;if(target.matches('[data-answer-id]'))syncSimpleAnswer(target);else if(target.matches('[data-task-key]'))updateTaskAnswer(target)});
+  el('question-card').addEventListener('change',e=>{const target=e.target;if(target.matches('[data-choice-id]')){state.answers[Number(target.dataset.choiceId)]=target.value;save();updateQuestionStatusOnly()}});
+  el('question-map').addEventListener('click',e=>{const button=e.target.closest('[data-jump]');if(button){document.querySelector('.quiz-sidebar').classList.remove('mobile-open');goTo(Number(button.dataset.jump))}});
+  el('home-sections').addEventListener('click',e=>{const button=e.target.closest('[data-section-start]');if(button){const section=sections.find(s=>s.id===button.dataset.sectionStart);if(state.submittedAt){state.submittedAt=null;save()}if(!state.name){el('learner-name').focus();showToast(tx('nameHint'));return}state.started=true;const idx=questions.findIndex(x=>x.sec===section.id);showScreen('quiz-screen');goTo(idx)}});
+  el('back-to-questions').addEventListener('click',()=>{if(state.submittedAt){state.submittedAt=null;save();updateHome()}showScreen('quiz-screen');renderQuestion()});
+  el('edit-answers-btn').addEventListener('click',()=>{if(state.submittedAt){state.submittedAt=null;save();updateHome()}showScreen('quiz-screen');renderQuestion()});
+  el('submit-btn').addEventListener('click',()=>{const missing=questions.length-answeredCount();if(missing>0&&!confirm(tx('confirmIncomplete')))return;state.submittedAt=new Date().toISOString();save();renderReview();updateHome();showToast(tx('submittedToast'))});
+  el('export-btn').addEventListener('click',exportAnswers);el('print-btn').addEventListener('click',()=>window.print());
+  if(state.started&&!state.submittedAt)el('continue-btn').disabled=false;
+})();
+</script>
+</body>
+</html>
